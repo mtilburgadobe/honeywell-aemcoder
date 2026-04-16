@@ -1,0 +1,3 @@
+file:///workspace/migration-work/pages/featured-story-1.html
+file:///workspace/migration-work/pages/featured-story-2.html
+file:///workspace/migration-work/pages/featured-story-3.html
