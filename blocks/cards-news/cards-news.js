@@ -26,6 +26,11 @@ export default function decorate(block) {
       img.closest('picture').replaceWith(optimizedPic);
     }
   });
+  const heading = document.createElement('h2');
+  heading.className = 'cards-news-heading';
+  heading.textContent = 'Related Content';
+
   block.textContent = '';
+  block.append(heading);
   block.append(ul);
 }

@@ -21,8 +21,12 @@
 
 .hero-article .hero-article-text h1 {
   font-size: var(--heading-font-size-xl);
-  margin: 0 0 16px;
-  color: var(--text-color);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-transform: capitalize;
+  color: var(--dark-color);
+  margin: 0 0 8px;
 }
 
 .hero-article .hero-article-text p {
@@ -56,6 +60,12 @@
     flex-direction: column;
     justify-content: center;
     order: 0;
+  }
+
+  .hero-article .hero-article-text h1 {
+    font-size: 52px;
+    line-height: 52px;
+    letter-spacing: -1.82px;
   }
 
   .hero-article .hero-article-image {
