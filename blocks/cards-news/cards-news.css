@@ -47,31 +47,42 @@
   .section.cards-news-container {
     display: grid;
     grid-template-columns: 1fr 300px;
+    grid-template-rows: auto 1fr;
     gap: 0 32px;
-    align-items: start;
   }
 
-  /* Hero spans full width */
+  /* Hero spans full width, row 1 */
   .section.cards-news-container > .hero-article-wrapper,
   .section.cards-news-container > .hero-corporate-wrapper {
     grid-column: 1 / -1;
+    grid-row: 1;
   }
 
-  /* Article body takes left column */
-  .section.cards-news-container > .default-content-wrapper {
-    grid-column: 1;
-    grid-row: 2 / 99;
-  }
-
-  /* Cards sidebar takes right column, aligned to top of article */
+  /* Cards sidebar in right column, row 2 */
   .section.cards-news-container > .cards-news-wrapper {
-    grid-column: 2;
-    grid-row: 2 / 99;
+    grid-column: 2 / 3;
+    grid-row: 2;
     padding: 0;
+    margin: 0;
     max-width: none;
     width: auto;
-    position: sticky;
-    top: 20px;
-    align-self: start;
+  }
+
+  /* Override margin: auto from global styles on all wrappers in this grid */
+  .section.cards-news-container > .default-content-wrapper,
+  .section.cards-news-container > .cards-news-wrapper {
+    margin: 0;
+  }
+
+  /* Article body (default-content after cards) in left column, row 2 */
+  .section.cards-news-container > .cards-news-wrapper ~ .default-content-wrapper {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+
+  /* On live AEM page, default-content comes before cards — also handle that order */
+  .section.cards-news-container > .default-content-wrapper:has(~ .cards-news-wrapper) {
+    grid-column: 1 / 2;
+    grid-row: 2;
   }
 }
