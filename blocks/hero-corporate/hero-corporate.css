@@ -7,6 +7,7 @@
   position: relative;
   padding: 40px 24px;
   min-height: 300px;
+  overflow: hidden;
 }
 
 .hero-corporate h1,
@@ -26,15 +27,29 @@
   color: var(--text-color);
 }
 
-.hero-corporate picture {
+/* Background image - handles both picture elements and bare img */
+.hero-corporate picture,
+.hero-corporate .hero-corporate-bg {
   position: absolute;
   z-index: -1;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
 }
 
-.hero-corporate img {
+.hero-corporate picture img,
+.hero-corporate .hero-corporate-bg img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure the image row (first div) acts as background when it contains a picture */
+.hero-corporate > div:first-child:has(picture) {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+}
+
+.hero-corporate > div:first-child:has(picture) img {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -43,5 +58,6 @@
 @media (width >= 900px) {
   .hero-corporate {
     padding: 40px 32px;
+    min-height: 400px;
   }
 }
