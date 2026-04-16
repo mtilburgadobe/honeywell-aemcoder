@@ -1,1 +1,6 @@
 /* add global styles that can be loaded post LCP here */
+
+/* Article pages: section containing hero-article needs full width */
+main > .section.hero-article-container {
+  width: 100%;
+}

@@ -4,6 +4,7 @@
 import heroArticleParser from './parsers/hero-article.js';
 import cardsRelatedParser from './parsers/cards-related.js';
 import honeywellCleanupTransformer from './transformers/honeywell-cleanup.js';
+import articleLayoutTransformer from './transformers/honeywell-article-layout.js';
 
 const parsers = {
   'hero-article': heroArticleParser,
@@ -24,7 +25,7 @@ const PAGE_TEMPLATE = {
   ],
 };
 
-const transformers = [honeywellCleanupTransformer];
+const transformers = [honeywellCleanupTransformer, articleLayoutTransformer];
 
 function executeTransformers(hookName, element, payload) {
   const enhancedPayload = { ...payload, template: PAGE_TEMPLATE };

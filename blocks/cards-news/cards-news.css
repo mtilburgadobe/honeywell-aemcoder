@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
@@ -22,6 +22,16 @@
 
 .cards-news > ul > li img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
+}
+
+/* Sidebar layout on article pages */
+@media (width >= 900px) {
+  .cards-news-wrapper {
+    float: right;
+    width: 33%;
+    margin-left: 32px;
+    margin-bottom: 16px;
+  }
 }

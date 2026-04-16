@@ -1,5 +1,10 @@
+.hero-article-container {
+  margin: 0;
+}
+
 .hero-article-container .hero-article-wrapper {
-  max-width: unset;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 0;
 }
 

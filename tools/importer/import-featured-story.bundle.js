@@ -122,6 +122,43 @@ var CustomImportScript = (() => {
     }
   }
 
+  // tools/importer/transformers/honeywell-article-layout.js
+  var H2 = { before: "beforeTransform", after: "afterTransform" };
+  function transform2(hookName, element, payload) {
+    if (hookName === H2.after) {
+      const relatedBlock = element.querySelector("table");
+      if (!relatedBlock) return;
+      const firstCell = relatedBlock.querySelector("tr:first-child td, tr:first-child th");
+      if (!firstCell || !firstCell.textContent.trim().toLowerCase().includes("cards-news")) return;
+      let relatedHeading = null;
+      let prev = relatedBlock.previousElementSibling;
+      while (prev) {
+        if (prev.tagName && prev.tagName.match(/^H[1-6]$/) && prev.textContent.trim() === "Related Content") {
+          relatedHeading = prev;
+          break;
+        }
+        prev = prev.previousElementSibling;
+      }
+      const heroBlock = element.querySelector("table");
+      if (heroBlock === relatedBlock) return;
+      const allChildren = [...element.children];
+      let insertPoint = null;
+      for (const child of allChildren) {
+        if (child.tagName === "TABLE") continue;
+        if (child.tagName === "P" || child.tagName.match(/^H[1-6]$/)) {
+          insertPoint = child;
+          break;
+        }
+      }
+      if (insertPoint && relatedBlock) {
+        if (relatedHeading) {
+          insertPoint.before(relatedHeading);
+        }
+        insertPoint.before(relatedBlock);
+      }
+    }
+  }
+
   // tools/importer/import-featured-story.js
   var parsers = {
     "hero-article": parse,
@@ -140,7 +177,7 @@ var CustomImportScript = (() => {
       { id: "section-3", name: "Related Content", selector: ".related-content", style: null, blocks: ["cards-news"], defaultContent: ["h2"] }
     ]
   };
-  var transformers = [transform];
+  var transformers = [transform, transform2];
   function executeTransformers(hookName, element, payload) {
     const enhancedPayload = __spreadProps(__spreadValues({}, payload), { template: PAGE_TEMPLATE });
     transformers.forEach((fn) => {
