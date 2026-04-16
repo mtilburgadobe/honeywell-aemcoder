@@ -2,28 +2,44 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
 }
 
 .cards-news > ul > li {
-  border: 1px solid #dadada;
   background-color: var(--background-color);
-}
-
-.cards-news .cards-news-card-body {
-  margin: 16px;
 }
 
 .cards-news .cards-news-card-image {
   line-height: 0;
 }
 
-.cards-news > ul > li img {
+.cards-news .cards-news-card-image img,
+.cards-news .cards-news-card-image picture {
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  display: block;
+}
+
+.cards-news .cards-news-card-body {
+  padding: 12px 0;
+}
+
+.cards-news .cards-news-card-body h3 {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  line-height: 1.4;
+}
+
+.cards-news .cards-news-card-body a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.cards-news .cards-news-card-body a:hover {
+  text-decoration: underline;
 }
 
 /* Sidebar layout on article pages */
