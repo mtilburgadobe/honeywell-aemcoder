@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-feature",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-04-16T07:02:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.honeywell.com/us/en",
+    "originPage": "corporate homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "feature-cards",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "image + category-label + description",
+    "buttonCount": 0,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "feature highlight sections",
+      "category overview grids",
+      "solution/capability showcases with images"
+    ],
+    "notSuitableFor": [
+      "news article listings without images",
+      "text-only card grids"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/us/en"],
+    "reuseCount": 1,
+    "lastUsed": "2026-04-16T07:02:00.000Z"
+  }
+}

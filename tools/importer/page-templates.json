@@ -1,0 +1,99 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.honeywell.com/us/en"
+      ],
+      "description": "Honeywell US homepage with hero, featured content, and promotional sections",
+      "blocks": [
+        {
+          "name": "hero-corporate",
+          "instances": ["#hero-banner"]
+        },
+        {
+          "name": "cards-feature",
+          "instances": [".cmp-section-container-preview-mode.bg-color-gray-1:not(#hero-banner) .responsivegrid.bg-transparent.p-15.mt-15"]
+        },
+        {
+          "name": "tabs-industry",
+          "instances": [".leftrailwithcontent"]
+        },
+        {
+          "name": "cards-news",
+          "instances": [".filtered-list"]
+        },
+        {
+          "name": "columns-info",
+          "instances": [".advancedaccordion-block"]
+        },
+        {
+          "name": "hero-promo",
+          "instances": [".cmp-section-container-preview-mode.bg-color-gray-3"]
+        },
+        {
+          "name": "columns-contact",
+          "instances": [".responsivegrid.bg-light-gray.p-15 > .aem-Grid > .responsivegrid.bg-light-gray.p-30"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero Banner",
+          "selector": "#hero-banner",
+          "style": null,
+          "blocks": ["hero-corporate"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Mega Trends",
+          "selector": ".cmp-section-container-preview-mode.bg-color-gray-1:not(#hero-banner)",
+          "style": null,
+          "blocks": ["cards-feature"],
+          "defaultContent": ["h2.section-title", ".cmp-text h6"]
+        },
+        {
+          "id": "section-3",
+          "name": "What We Do",
+          "selector": ".leftrailwithcontent",
+          "style": null,
+          "blocks": ["tabs-industry"],
+          "defaultContent": ["h2.section-title"]
+        },
+        {
+          "id": "section-4",
+          "name": "Whats New",
+          "selector": ".filtered-list",
+          "style": null,
+          "blocks": ["cards-news"],
+          "defaultContent": ["h2.section-title"]
+        },
+        {
+          "id": "section-5",
+          "name": "Industrial Digitalization",
+          "selector": ".advancedaccordion-block",
+          "style": null,
+          "blocks": ["columns-info"],
+          "defaultContent": ["h2.section-title", ".cmp-text .text-header5"]
+        },
+        {
+          "id": "section-6",
+          "name": "Honeywell Forge Promo",
+          "selector": ".cmp-section-container-preview-mode.bg-color-gray-3",
+          "style": null,
+          "blocks": ["hero-promo"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-7",
+          "name": "Help and Support",
+          "selector": ".responsivegrid.bg-light-gray.p-15",
+          "style": "grey",
+          "blocks": ["columns-contact"],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}
