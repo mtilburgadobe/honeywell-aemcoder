@@ -42,12 +42,36 @@
   text-decoration: underline;
 }
 
-/* Sidebar layout on article pages */
+/* Article sidebar layout using CSS Grid on the section */
 @media (width >= 900px) {
-  .cards-news-wrapper {
-    float: right;
-    width: 33%;
-    margin-left: 32px;
-    margin-bottom: 16px;
+  .section.cards-news-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 0 32px;
+    align-items: start;
+  }
+
+  /* Hero spans full width */
+  .section.cards-news-container > .hero-article-wrapper,
+  .section.cards-news-container > .hero-corporate-wrapper {
+    grid-column: 1 / -1;
+  }
+
+  /* Article body takes left column */
+  .section.cards-news-container > .default-content-wrapper {
+    grid-column: 1;
+    grid-row: 2 / 99;
+  }
+
+  /* Cards sidebar takes right column, aligned to top of article */
+  .section.cards-news-container > .cards-news-wrapper {
+    grid-column: 2;
+    grid-row: 2 / 99;
+    padding: 0;
+    max-width: none;
+    width: auto;
+    position: sticky;
+    top: 20px;
+    align-self: start;
   }
 }
