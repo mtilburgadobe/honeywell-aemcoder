@@ -122,6 +122,19 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+
+  // Add breadcrumb for article pages — only on the page's main element, not fragments
+  const pagePath = window.location.pathname;
+  if (main === document.querySelector('main') && (pagePath.includes('/news/') || pagePath.includes('/press/'))) {
+    const firstSection = main.querySelector(':scope > .section');
+    if (firstSection) {
+      const bcWrapper = document.createElement('div');
+      bcWrapper.className = 'breadcrumb-wrapper';
+      bcWrapper.append(buildBlock('breadcrumb', { elems: [] }));
+      firstSection.prepend(bcWrapper);
+    }
+  }
+
   decorateBlocks(main);
   decorateButtons(main);
 }
