@@ -94,6 +94,84 @@
           "defaultContent": []
         }
       ]
+    },
+    {
+      "name": "featured-story",
+      "urls": [
+        "https://www.honeywell.com/us/en/news/featured-stories/2025/10/omdia-names-honeywell-a-market-leader-in-ot-cybersecurity-services",
+        "https://www.honeywell.com/us/en/news/featured-stories/2025/11/4-areas-to-assess-to-future-proof-your-hotel",
+        "https://www.honeywell.com/us/en/news/featured-stories/2025/08/gas-detection-for-semiconductor-manufacturing-plants",
+        "https://www.honeywell.com/us/en/news/featured-stories/2025/06/get-ahead-with-energy-storage-or-risk-getting-left-behind"
+      ],
+      "description": "Featured story article page with hero image, article body, and related content",
+      "blocks": [
+        {
+          "name": "hero-corporate",
+          "instances": ["#hero-banner-split"]
+        },
+        {
+          "name": "cards-news",
+          "instances": [".related-content"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Article Hero",
+          "selector": "#hero-banner-split",
+          "style": null,
+          "blocks": ["hero-corporate"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Article Body",
+          "selector": ".cmp-text",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["h1", "h2", "h3", "p", "ul", "ol"]
+        },
+        {
+          "id": "section-3",
+          "name": "Related Content",
+          "selector": ".related-content",
+          "style": null,
+          "blocks": ["cards-news"],
+          "defaultContent": ["h2"]
+        }
+      ]
+    },
+    {
+      "name": "press-release",
+      "urls": [
+        "https://www.honeywell.com/us/en/press/2025/11/honeywell-to-help-dangote-double-production-capabilities-at-africa-s-largest-refinery",
+        "https://www.honeywell.com/us/en/press/2025/10/honeywell-carbon-capture-cechnology-to-help-transform-shuttered-power-plant-into-fertilizer-facility-supporting-us-farmers"
+      ],
+      "description": "Press release page with headline, date, body text, and media contact information",
+      "blocks": [
+        {
+          "name": "hero-corporate",
+          "instances": ["#hero-banner-split"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Article Hero",
+          "selector": "#hero-banner-split",
+          "style": null,
+          "blocks": ["hero-corporate"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Article Body",
+          "selector": ".cmp-text",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["h1", "h2", "h3", "p", "ul", "ol"]
+        }
+      ]
     }
   ]
 }
