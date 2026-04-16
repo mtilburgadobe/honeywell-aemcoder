@@ -1,12 +1,12 @@
 /* eslint-disable */
 /* global WebImporter */
 
-import heroCorporateParser from './parsers/hero-corporate.js';
+import heroArticleParser from './parsers/hero-article.js';
 import cardsRelatedParser from './parsers/cards-related.js';
 import honeywellCleanupTransformer from './transformers/honeywell-cleanup.js';
 
 const parsers = {
-  'hero-corporate': heroCorporateParser,
+  'hero-article': heroArticleParser,
   'cards-news': cardsRelatedParser,
 };
 
@@ -14,11 +14,11 @@ const PAGE_TEMPLATE = {
   name: 'featured-story',
   description: 'Featured story article page with hero image, article body, and related content',
   blocks: [
-    { name: 'hero-corporate', instances: ['#hero-banner-split'] },
+    { name: 'hero-article', instances: ['#hero-banner-split'] },
     { name: 'cards-news', instances: ['.related-content'] },
   ],
   sections: [
-    { id: 'section-1', name: 'Article Hero', selector: '#hero-banner-split', style: null, blocks: ['hero-corporate'], defaultContent: [] },
+    { id: 'section-1', name: 'Article Hero', selector: '#hero-banner-split', style: null, blocks: ['hero-article'], defaultContent: [] },
     { id: 'section-2', name: 'Article Body', selector: '.cmp-text', style: null, blocks: [], defaultContent: ['h1', 'h2', 'h3', 'p', 'ul', 'ol'] },
     { id: 'section-3', name: 'Related Content', selector: '.related-content', style: null, blocks: ['cards-news'], defaultContent: ['h2'] },
   ],

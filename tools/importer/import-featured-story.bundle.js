@@ -40,37 +40,31 @@ var CustomImportScript = (() => {
     default: () => import_featured_story_default
   });
 
-  // tools/importer/parsers/hero-corporate.js
+  // tools/importer/parsers/hero-article.js
   function parse(element, { document }) {
-    let bgImage = element.querySelector(':scope > img, :scope > picture, .image_desktop img, picture img, img[src*="scene7"], img[src*="images/"]');
-    if (!bgImage) {
+    const heading = element.querySelector("h1, h2");
+    const description = element.querySelector(".cmp-text p, p:not(:has(img))");
+    let img = element.querySelector('img[src*="scene7"], img[src*="honeywell"], .s7dm-dynamic-media img');
+    if (!img) {
       const style = element.getAttribute("style") || "";
       const bgMatch = style.match(/url\(['"]?(.*?)['"]?\)/);
       if (bgMatch) {
         let bgUrl = bgMatch[1];
-        if (bgUrl.startsWith("//")) bgUrl = `https:${bgUrl}`;
-        bgImage = document.createElement("img");
-        bgImage.src = bgUrl;
-        bgImage.alt = element.getAttribute("alt") || "";
+        if (bgUrl.startsWith("//")) bgUrl = "https:" + bgUrl;
+        img = document.createElement("img");
+        img.src = bgUrl;
+        img.alt = element.getAttribute("alt") || "";
       }
     }
-    const heading = element.querySelector("h1, h2");
-    const description = element.querySelector(".cmp-text p, p.desc");
-    const ctaLink = element.querySelector(".cmp-call-to-action a, a[href]");
     const cells = [];
-    if (bgImage) {
-      cells.push([bgImage]);
+    const textCell = [];
+    if (heading) textCell.push(heading);
+    if (description && description.textContent.trim().length > 0) textCell.push(description);
+    cells.push(textCell);
+    if (img) {
+      cells.push([img]);
     }
-    const contentCell = [];
-    if (heading) contentCell.push(heading);
-    if (description) contentCell.push(description);
-    if (ctaLink && (!heading || !heading.contains(ctaLink)) && (!description || !description.contains(ctaLink))) {
-      contentCell.push(ctaLink);
-    }
-    if (contentCell.length > 0) {
-      cells.push(contentCell);
-    }
-    const block = WebImporter.Blocks.createBlock(document, { name: "hero-corporate", cells });
+    const block = WebImporter.Blocks.createBlock(document, { name: "hero-article", cells });
     element.replaceWith(block);
   }
 
@@ -130,18 +124,18 @@ var CustomImportScript = (() => {
 
   // tools/importer/import-featured-story.js
   var parsers = {
-    "hero-corporate": parse,
+    "hero-article": parse,
     "cards-news": parse2
   };
   var PAGE_TEMPLATE = {
     name: "featured-story",
     description: "Featured story article page with hero image, article body, and related content",
     blocks: [
-      { name: "hero-corporate", instances: ["#hero-banner-split"] },
+      { name: "hero-article", instances: ["#hero-banner-split"] },
       { name: "cards-news", instances: [".related-content"] }
     ],
     sections: [
-      { id: "section-1", name: "Article Hero", selector: "#hero-banner-split", style: null, blocks: ["hero-corporate"], defaultContent: [] },
+      { id: "section-1", name: "Article Hero", selector: "#hero-banner-split", style: null, blocks: ["hero-article"], defaultContent: [] },
       { id: "section-2", name: "Article Body", selector: ".cmp-text", style: null, blocks: [], defaultContent: ["h1", "h2", "h3", "p", "ul", "ol"] },
       { id: "section-3", name: "Related Content", selector: ".related-content", style: null, blocks: ["cards-news"], defaultContent: ["h2"] }
     ]
