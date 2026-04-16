@@ -4,15 +4,16 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 0;
 }
 
 .cards-news > ul > li {
-  background-color: var(--background-color);
+  margin-bottom: 40px;
 }
 
 .cards-news .cards-news-card-image {
   line-height: 0;
+  margin-bottom: 8px;
 }
 
 .cards-news .cards-news-card-image img,
@@ -24,21 +25,23 @@
 }
 
 .cards-news .cards-news-card-body {
-  padding: 12px 0;
+  padding: 0;
 }
 
 .cards-news .cards-news-card-body h3 {
   margin: 0;
-  font-size: var(--body-font-size-m);
-  line-height: 1.4;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .cards-news .cards-news-card-body a {
-  color: var(--text-color);
+  color: #404040;
   text-decoration: none;
 }
 
 .cards-news .cards-news-card-body a:hover {
+  color: var(--link-color);
   text-decoration: underline;
 }
 
@@ -68,21 +71,16 @@
     width: auto;
   }
 
-  /* Override margin: auto from global styles on all wrappers in this grid */
-  .section.cards-news-container > .default-content-wrapper,
-  .section.cards-news-container > .cards-news-wrapper {
-    margin: 0;
-  }
-
-  /* Article body (default-content after cards) in left column, row 2 */
+  /* Article body and related wrappers — left column, row 2 */
   .section.cards-news-container > .cards-news-wrapper ~ .default-content-wrapper {
     grid-column: 1 / 2;
     grid-row: 2;
+    margin: 0;
   }
 
-  /* On live AEM page, default-content comes before cards — also handle that order */
   .section.cards-news-container > .default-content-wrapper:has(~ .cards-news-wrapper) {
     grid-column: 1 / 2;
     grid-row: 2;
+    margin: 0;
   }
 }
